@@ -13,7 +13,7 @@ export const inputSearch = () => {
     $input.autocomplete = "off";
 
     $icon.classList.add("user-icon");
-    $icon.innerHTML = "&#128100;"; // Icono de usuario como emoji (puedes cambiar por SVG o FontAwesome)
+    $icon.innerHTML = "&#128100;"; 
 
     $wrapper.appendChild($input);
     $wrapper.appendChild($icon);
