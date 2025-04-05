@@ -14,9 +14,9 @@ export const renderCard = async () => {
         html += PostCard(post);
       });
 
-      $container.innerHTML = html;     // ✅ las cards van dentro del contenedor
+      $container.innerHTML = html;     // las cards van dentro del contenedor
       $main.innerHTML = "";            // Limpiamos el contenido anterior del main
-      $main.appendChild($container);   // ✅ agregamos el contenedor al main
+      $main.appendChild($container);   //  agregamos el contenedor al main
     }
   });
   console.log("Los datos de las card estan cargados")
