@@ -1,0 +1,98 @@
+[
+  {
+    "titulo": "Interstellar",
+    "director": "Christopher Nolan",
+    "anio": 2014,
+    "genero": "Ciencia ficción",
+    "img": "assets/images/interstellar.webp",
+    "trailer": "https://youtu.be/LYS2O1nl9iM?si=R-JFkH7rL4C1k1o6"
+  },
+  {
+    "titulo": "El Padrino",
+    "director": "Francis Ford Coppola",
+    "anio": 1972,
+    "genero": "Crimen",
+    "img": "assets/images/Elpadrino.webp",
+    "trailer": "https://youtu.be/LYS2O1nl9iM?si=R-JFkH7rL4C1k1o6"
+  },
+  {
+    "titulo": "Spirited Away",
+    "director": "Hayao Miyazaki",
+    "anio": 2001,
+    "genero": "Animación",
+    "img": "assets/images/Spirited.webp",
+    "trailer": "https://youtu.be/ByXuk9QqQkk?si=9dNhYUJchcIjjgMY"
+  },
+  {
+    "titulo": "Inception",
+    "director": "Christopher Nolan",
+    "anio": 2010,
+    "genero": "Ciencia ficción",
+    "img": "assets/images/Inception.webp",
+    "trailer": "https://youtu.be/RV9L7ui9Cn8?si=U6V6ub_Q03rdVYeV"
+  },
+  {
+    "titulo": "Pulp Fiction",
+    "director": "Quentin Tarantino",
+    "anio": 1994,
+    "genero": "Crimen",
+    "img": "assets/images/PulpFiction.webp",
+    "trailer": "https://youtu.be/s7EdQ4FqbhY?si=y37eAhDK9JczVM3Z"
+  },
+  {
+    "titulo": "Parasite",
+    "director": "Bong Joon-ho",
+    "anio": 2019,
+    "genero": "Thriller",
+    "img": "assets/images/parasite.webp",
+    "trailer": "https://youtu.be/90dWVETAdtI?si=PEhK1MDuSpYSIk2T"
+  },
+  {
+    "titulo": "The Matrix",
+    "director": "Lana y Lilly Wachowski",
+    "anio": 1999,
+    "genero": "Acción",
+    "img": "assets/images/Matrix.webp",
+    "trailer": ""
+  },
+  {
+    "titulo": "La La Land",
+    "director": "Damien Chazelle",
+    "anio": 2016,
+    "genero": "Musical",
+    "img": "assets/images/land.webp",
+    "trailer": ""
+  },
+  {
+    "titulo": "The Dark Knight",
+    "director": "Christopher Nolan",
+    "anio": 2008,
+    "genero": "Acción",
+    "img": "assets/images/interstellar.webp",
+    "trailer": ""
+  },
+  {
+    "titulo": "Your Name",
+    "director": "Jean-Pierre Jeunet",
+    "anio": 2001,
+    "genero": "romántica",
+    "img": "assets/images/interstellar.webp",
+    "trailer": ""
+  },
+  {
+    "titulo": "Amélie",
+    "director": "Jean-Pierre Jeunet",
+    "anio": 2001,
+    "genero": "Comedia romántica",
+    "img": "assets/images/interstellar.webp",
+    "trailer": ""
+  },
+  {
+    "titulo": "Amélie",
+    "director": "Jean-Pierre Jeunet",
+    "anio": 2001,
+    "genero": "Comedia romántica",
+    "img": "assets/images/interstellar.webp",
+    "trailer": ""
+  }
+]

@@ -1,0 +1,24 @@
+<div class="card-container">
+  <article class="post-card" *ngFor="let movie of movies">
+    <img [src]="movie.img" [alt]="movie.titulo" class="card-img" />
+
+    <div class="card-content">
+      <h3 class="card-title">{{ movie.titulo }}</h3>
+      <p class="card-desc">
+        <strong>Director:</strong> {{ movie.director }}<br />
+        <strong>Año:</strong> {{ movie.anio }}<br />
+        <strong>Género:</strong> {{ movie.genero }}
+      </p>
+      <div class="card-buttons">
+        <a
+          class="btn btn-trailer"
+          [href]="movie.trailer"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Ver tráiler</a
+        >
+        <button class="btn btn-fav btn-agregar" (click)=" addToFavorites(movie.titulo)">Agregar a favoritos</button>
+      </div>
+    </div>
+  </article>
+</div>

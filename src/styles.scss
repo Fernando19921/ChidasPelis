@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+/* =========================
+   🌍 Estilos globales
+========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Rubik', sans-serif;
+  background: transparent; // ✅ Aquí ya eliminaste el fondo rosado
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* ✅ Asegura que el contenedor principal no se desborde */
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+/* ✅ Opcional: contenedor general de tu contenido */
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* ✅ Quita scroll horizontal de todo */
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-thumb {
+  background: #c62828;
+  border-radius: 5px;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
