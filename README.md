@@ -17,7 +17,7 @@ Este una migracion de un proyecto creado en vanilla js y fue migrado a   [Angula
 3. Ejecuta el siguiente comando en la consola:
 
    ```bash
-   git clone [URL_DEL_REPOSITORIO]
+   git clone https://github.com/Fernando19921/ChidasPelis.git
    ```
 
 
