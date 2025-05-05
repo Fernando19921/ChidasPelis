@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "titulo": "Interstellar",
     "director": "Christopher Nolan",
     "anio": 2014,
@@ -8,6 +9,7 @@
     "trailer": "https://youtu.be/LYS2O1nl9iM?si=R-JFkH7rL4C1k1o6"
   },
   {
+    "id": 2,
     "titulo": "El Padrino",
     "director": "Francis Ford Coppola",
     "anio": 1972,
@@ -16,6 +18,7 @@
     "trailer": "https://youtu.be/LYS2O1nl9iM?si=R-JFkH7rL4C1k1o6"
   },
   {
+    "id": 3,
     "titulo": "Spirited Away",
     "director": "Hayao Miyazaki",
     "anio": 2001,
@@ -24,6 +27,7 @@
     "trailer": "https://youtu.be/ByXuk9QqQkk?si=9dNhYUJchcIjjgMY"
   },
   {
+    "id": 4,
     "titulo": "Inception",
     "director": "Christopher Nolan",
     "anio": 2010,
@@ -32,6 +36,7 @@
     "trailer": "https://youtu.be/RV9L7ui9Cn8?si=U6V6ub_Q03rdVYeV"
   },
   {
+    "id": 5,
     "titulo": "Pulp Fiction",
     "director": "Quentin Tarantino",
     "anio": 1994,
@@ -40,6 +45,7 @@
     "trailer": "https://youtu.be/s7EdQ4FqbhY?si=y37eAhDK9JczVM3Z"
   },
   {
+    "id": 6,
     "titulo": "Parasite",
     "director": "Bong Joon-ho",
     "anio": 2019,
@@ -48,6 +54,7 @@
     "trailer": "https://youtu.be/90dWVETAdtI?si=PEhK1MDuSpYSIk2T"
   },
   {
+    "id": 7,
     "titulo": "The Matrix",
     "director": "Lana y Lilly Wachowski",
     "anio": 1999,
@@ -56,6 +63,7 @@
     "trailer": ""
   },
   {
+    "id": 8,
     "titulo": "La La Land",
     "director": "Damien Chazelle",
     "anio": 2016,
@@ -64,6 +72,7 @@
     "trailer": ""
   },
   {
+    "id": 9,
     "titulo": "The Dark Knight",
     "director": "Christopher Nolan",
     "anio": 2008,
@@ -72,6 +81,7 @@
     "trailer": ""
   },
   {
+    "id": 10,
     "titulo": "Your Name",
     "director": "Jean-Pierre Jeunet",
     "anio": 2001,
@@ -80,6 +90,7 @@
     "trailer": ""
   },
   {
+    "id": 11,
     "titulo": "Amélie",
     "director": "Jean-Pierre Jeunet",
     "anio": 2001,
@@ -88,6 +99,7 @@
     "trailer": ""
   },
   {
+    "id": 12,
     "titulo": "Amélie",
     "director": "Jean-Pierre Jeunet",
     "anio": 2001,

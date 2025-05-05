@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Movie {
+  id:number;
   titulo: string;
-  img: string;
-  director: string;
-  anio: number;
-  genero: string;
-  trailer: string;
+  img?: string;
+  director?: string;
+  anio?: number;
+  genero?: string;
+  trailer?: string;
 }
 
 

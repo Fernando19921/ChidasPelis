@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MovieCardComponent } from '@module/movie-card/movie-card.component';
+import { MovieCardComponent } from '@module/movie-card/card/movie-card.component';
 import { HeaderUserComponent } from '@shared/components/header-user/header-user.component';
 
 @Component({
@@ -7,7 +7,7 @@ import { HeaderUserComponent } from '@shared/components/header-user/header-user.
   standalone: true,
   imports: [       // 👈 Este es el cambio importante
     HeaderUserComponent,
-    MovieCardComponent
+    MovieCardComponent,
   ],
   templateUrl: './homepages.component.html',
   styleUrls: ['./homepages.component.scss']

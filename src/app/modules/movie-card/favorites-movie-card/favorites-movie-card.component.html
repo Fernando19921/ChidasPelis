@@ -1,5 +1,12 @@
+<app-header-user></app-header-user>
 <div class="card-container">
-  <article class="post-card" *ngFor="let movie of movies">
+  <!-- Mostrar un mensaje si no hay películas favoritas -->
+  <div *ngIf="movieFavorite.length === 0" class="alert alert-info text-center">
+    No tienes películas favoritas guardadas.
+  </div>
+
+  <!-- Mostrar las tarjetas de películas favoritas -->
+  <article *ngFor="let movie of movieFavorite" class="post-card">
     <img [src]="movie.img" [alt]="movie.titulo" class="card-img" />
 
     <div class="card-content">
@@ -14,11 +21,12 @@
           class="btn btn-trailer"
           [href]="movie.trailer"
           target="_blank"
-          rel="noopener noreferrer"
-          >Ver tráiler</a
-        >
-        <button class="btn btn-fav btn-agregar" (click)=" addToFavorites(movie.titulo)">Agregar a favoritos</button>
+          rel="noopener noreferrer">
+          Ver tráiler
+        </a>
+        <button class="btn btn-fav btn-agregar" (click)="deleteFavorite(movie.id)" >Quitar Favoritos</button>
       </div>
     </div>
   </article>
 </div>
+
