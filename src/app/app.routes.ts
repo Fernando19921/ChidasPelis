@@ -1,13 +1,12 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from '@module/auth/login/login.component';
-import { HomepagesComponent } from '@module/home/pages/homepages/homepages.component';
-import { FavoritesMovieCardComponent } from '@module/movie-card/favorites-movie-card/favorites-movie-card.component';
+import { LoginComponent } from 'src/app/login/components/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full'  // Redirige automáticamente al login si el usuario accede a la página raíz
+    pathMatch: 'full'
   },
   {
     path: 'login',
@@ -15,10 +14,18 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomepagesComponent
+    loadComponent: () => import('./cards/home/pages/homepages/homepages.component')
+      .then(m => m.HomepagesComponent),
+    canActivate: [AuthGuard]
   },
   {
     path: 'favoritos',
-    component: FavoritesMovieCardComponent
+    loadComponent: () => import('./cards/components/favorites-movie-card/favorites-movie-card.component')
+      .then(m => m.FavoritesMovieCardComponent),
+    canActivate: [AuthGuard] // ✅ ahora protegida
+  },
+  {
+    path: '**',
+    component:LoginComponent // ✅ evita rutas inválidas en blanco
   }
 ];

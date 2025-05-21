@@ -1,0 +1,30 @@
+.user-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  i {
+    color: #ffffffcc;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+  }
+
+  input.form-control {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    &::placeholder {
+      color: #888;
+    }
+
+    &:focus {
+      outline: 2px solid #e50914;
+    }
+  }
+}

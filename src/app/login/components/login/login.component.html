@@ -3,15 +3,17 @@
 </header>
 
 <section class="login-form d-flex justify-content-center align-items-center">
-  <div class="login-container shadow-lg rounded bg-dark text-white">
-    <img src="assets/images/logo.webp" alt="Logo" class="logo-form" />
+  <div class="login-container shadow-lg rounded bg-dark text-white p-4">
+    <img src="assets/images/logo.webp" alt="Logo" class="logo-form mx-auto d-block mb-3" />
     <h2 class="text-center mb-4">Iniciar Sesión</h2>
 
-    <form (submit)="onSubmit()">
+    <form (ngSubmit)="validate()" #loginForm="ngForm">
       <div class="mb-3">
         <input
+          [(ngModel)]="user"
           type="email"
-          name="email"
+          name="user"
+          required
           placeholder="Correo electrónico"
           class="form-control"
         />
@@ -19,16 +21,23 @@
 
       <div class="mb-3">
         <input
+          [(ngModel)]="password"
           type="password"
           name="password"
+          required
           placeholder="Contraseña"
           class="form-control"
         />
       </div>
 
-      <button type="submit" class="btn btn-danger w-100 fw-bold">
+      <button type="submit" class="btn btn-danger w-100 fw-bold" [disabled]="!loginForm.valid">
         Ingresar
       </button>
     </form>
+
+    <p *ngIf="error" class="text-danger text-center mt-3">
+      Usuario o contraseña incorrectos
+    </p>
   </div>
 </section>
+

@@ -72,30 +72,6 @@ $font: 'Rubik', sans-serif;
     }
 
     // 🔍 Input de búsqueda + icono usuario
-    .search-section {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-
-      .input-wrapper {
-        background-color: #20202f;
-        padding: 0.35rem 1rem;
-        border-radius: 2rem;
-        height: 40px;
-
-        .search-input {
-          background: transparent;
-          border: none;
-          color: $white;
-          outline: none;
-          font-size: 1rem;
-
-          &::placeholder {
-            color: $placeholder;
-          }
-        }
-      }
-
       .user-icon {
         width: 42px;
         height: 42px;
@@ -115,7 +91,6 @@ $font: 'Rubik', sans-serif;
       }
     }
   }
-}
 
 // ===================
 // 📱 Responsive
@@ -139,7 +114,6 @@ $font: 'Rubik', sans-serif;
           text-align: center;
         }
       }
-
       .search-section {
         flex-direction: column;
         gap: 0.75rem;

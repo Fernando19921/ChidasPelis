@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { MovieService, Movie } from '../../../services/movie.service';
+import { Movie, MovieService } from '../../../services/movie.service';
+
 
 @Component({
   selector: 'app-movie-card',
@@ -14,7 +15,7 @@ export class MovieCardComponent implements OnInit {
   addedToFavorites: { [id: number]: boolean } = {};
 
   constructor(
-    private movieService: MovieService,
+    private MovieService: MovieService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -30,7 +31,7 @@ export class MovieCardComponent implements OnInit {
     }
 
     // Obtener películas desde el servicio
-    this.movieService.getMovies().subscribe(data => {
+    this.MovieService.getMovies().subscribe(data => {
       this.movies = data;
     });
   }

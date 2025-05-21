@@ -31,6 +31,20 @@ Este una migracion de un proyecto creado en vanilla js y fue migrado a   [Angula
 
 ![Vista del Login](./src/assets/images/Covarage.webp)
 
+### Diagrama Entidad Relacion
+
+![Modelo Relacional](./src/assets/images/DiagramaRelacional.webp)
+
+### Microsoft Sql Server
+
+![1747796476449](./src/assets/images/Sql.png)
+
+### Codigo Sql
+[Script Sql](script.sql)
+### Modelado de la base de datos y reglas de negocio y operaciones
+[Archivo Completo de Modeladodo BDD](modeladoBDD.md)
+
+
 ### Dependecia utilizadas
 
 ## Dependencias y Bibliotecas
@@ -60,12 +74,17 @@ Otro conflicto que tuve fue al utilizar `HttpClient`, ya que nunca lo había usa
 
 Las pruebas unitarias realizadas con Jasmine me resultaron algo desafiantes, ya que nunca antes había trabajado con pruebas tan elaboradas en mi proyecto. Aunque tenía algo de conocimiento previo utilizando Jest, encontré ciertas dificultades debido a aspectos del testing que aún desconozco. Sin embargo, esta experiencia me permitió aprender y mejorar mis habilidades en este ámbito.
 
-### Retrospectiva
+###### Modelado de la base de datos
 
+El modelado de la base de datos no me resultó tan complicado, ya que apliqué las reglas de negocio que debía cumplir. Consideré las operaciones que se realizarían sobre la base de datos, así como el tipo de datos y las relaciones entre las distintas entidades.
+
+### Retrospectiva
 
 ### ✅ ¿Qué hice bien?
 
 Logré cumplir con los objetivos del proyecto, ya que pude  **migrar exitosamente la aplicación a Angular** . Además, implementé pruebas unitarias que cubren todas las funcionalidades del componente, alcanzando un **90% de cobertura de código** (`code coverage`). Esto garantiza un alto nivel de confiabilidad y calidad en el funcionamiento del módulo.
+
+Logré estructurar una (`base de datos`) que se ajusta a las necesidades de mi proyecto, incorporando todas las operaciones necesarias que podrán ser implementadas. Esto me garantiza una base sólida, funcional y preparada para su correcto desempeño.
 
 #### 🧪 Funcionalidades cubiertas en los tests:
 
@@ -80,6 +99,8 @@ Logré cumplir con los objetivos del proyecto, ya que pude  **migrar exitosament
 
 Tuve dificultades al **organizar los archivos del proyecto** y al adaptarme a Angular, ya que me enfrenté a varias características propias del framework que desconocía. Sin embargo, estas barreras me permitieron aprender y mejorar mis habilidades en esta nueva tecnología.
 
+La principal dificultad que tuve al crear mi base de datos fue adaptarme al uso de T-SQL, ya que no estaba completamente familiarizado con su sintaxis y funciones.
+
 #### 🔁 ¿Qué puedo hacer diferente?
 
-Creo que puedo mejorar aún más mi trabajo fortaleciendo mis conocimientos en Angular y practicando más para familiarizarme con su estructura y herramientas.
+Creo que puedo mejorar aún más mi trabajo fortaleciendo mis conocimientos en Angular y practicando más para familiarizarme con su estructura y herramientas al igual que familiarizarme un poco mas con T-sql.

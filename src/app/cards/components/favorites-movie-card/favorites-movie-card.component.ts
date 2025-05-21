@@ -1,7 +1,7 @@
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
-import { MovieService, Movie } from '../../../services/movie.service';
 import { HeaderUserComponent } from '@shared/components/header-user/header-user.component';
+import { Movie, MovieService } from '../../../services/movie.service';
 
 @Component({
   selector: 'app-favorites-movie-card',
@@ -15,7 +15,7 @@ export class FavoritesMovieCardComponent {
   public movieFavorite: Movie[] = []; // Almacena las películas favoritas completas después de filtrarlas
 
   constructor(
-    private movieService: MovieService, // Servicio para obtener las películas
+    private MovieService: MovieService, // Servicio para obtener las películas
     @Inject(PLATFORM_ID) private platformId: Object // Identifica la plataforma (navegador o servidor)
   ) {}
 
@@ -43,7 +43,7 @@ export class FavoritesMovieCardComponent {
       }
 
       // Llama al servicio para obtener todas las películas y filtra las favoritas
-      this.movieService.getMovies().subscribe(movies => {
+      this.MovieService.getMovies().subscribe(movies => {
         this.movieFavorite = movies.filter(movie =>
           this.movieFavoriteIds.includes(movie.id) // Filtra las películas cuyos IDs están en movieFavoriteIds
         );
