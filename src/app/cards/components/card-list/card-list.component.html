@@ -1,0 +1,10 @@
+<div class="movie-grid">
+  <app-movie-card
+    *ngFor="let movie of movies; let i=index"
+    [index]="i"
+    [movies]="movie"
+    [isFavorite]="addedToFavorites[movie.id]"
+    (addToFavorites)="addToFavorites($event)"
+    (removeFromFavorites)="removeFromFavorites($event)"
+  ></app-movie-card>
+</div>

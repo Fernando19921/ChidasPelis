@@ -1,29 +1,48 @@
-<div class="card-container">
-  <article class="post-card" *ngFor="let movie of movies">
-    <img [src]="movie.img" [alt]="movie.titulo" class="card-img" />
+<!-- Loader centrado (solo se muestra mientras la tarjeta está "cargando") -->
+<div class="d-flex justify-content-center my-4" *ngIf="!hasLoaded">
+  <app-lazy-img></app-lazy-img>
+</div>
 
+<!-- Tarjeta de película (se muestra cuando hasLoaded es true) -->
+<div class="card-container animate__animated animate__fadeIn" *ngIf="hasLoaded">
+  <article class="post-card">
+    
+    <!-- Imagen de la película -->
+    <img
+      [src]="movies.img"
+      [alt]="movies.titulo"
+      class="card-img"
+    />
+
+    <!-- Contenido de la tarjeta -->
     <div class="card-content">
-      <h3 class="card-title">{{ movie.titulo }}</h3>
+      <h3 class="card-title">{{ movies.titulo }}</h3>
+
       <p class="card-desc">
-        <strong>Director:</strong> {{ movie.director }}<br />
-        <strong>Año:</strong> {{ movie.anio }}<br />
-        <strong>Género:</strong> {{ movie.genero }}
+        <strong>Director:</strong> {{ movies.director }}<br />
+        <strong>Año:</strong> {{ movies.anio }}<br />
+        <strong>Género:</strong> {{ movies.genero }}
       </p>
+
+      <!-- Botones -->
       <div class="card-buttons">
         <a
           class="btn btn-trailer"
-          [href]="movie.trailer"
+          [href]="movies.trailer"
           target="_blank"
           rel="noopener noreferrer"
-          >Ver tráiler</a
         >
-        <button 
-        class="btn btn-fav btn-agregar" 
-        (click)="addToFavorites(movie.id)" 
-        [disabled]="addedToFavorites[movie.id]">
-        {{ addedToFavorites[movie.id] ? 'Agregado ⭐' : 'Agregar a favoritos' }}
-      </button>
+          Ver tráiler
+        </a>
+
+        <button
+          class="btn btn-fav btn-agregar"
+          (click)="onToggleFavorite()"
+        >
+          {{ isFavorite ? 'Mover de Favoritos ❌ ' : 'Agregar a favoritos ⭐' }}
+        </button>
       </div>
     </div>
+    
   </article>
 </div>

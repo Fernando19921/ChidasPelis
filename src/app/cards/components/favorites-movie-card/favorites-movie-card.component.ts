@@ -1,7 +1,8 @@
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { HeaderUserComponent } from '@shared/components/header-user/header-user.component';
-import { Movie, MovieService } from '../../../services/movie.service';
+import { MovieService } from '../../../services/movie.service';
+import { MovieI } from 'src/app/interfaces/movie-interface';
 
 @Component({
   selector: 'app-favorites-movie-card',
@@ -12,7 +13,7 @@ import { Movie, MovieService } from '../../../services/movie.service';
 })
 export class FavoritesMovieCardComponent {
   public movieFavoriteIds: number[] = []; // Almacena los IDs de las películas favoritas obtenidos de localStorage
-  public movieFavorite: Movie[] = []; // Almacena las películas favoritas completas después de filtrarlas
+  public movieFavorite: MovieI[] = []; // Almacena las películas favoritas completas después de filtrarlas
 
   constructor(
     private MovieService: MovieService, // Servicio para obtener las películas

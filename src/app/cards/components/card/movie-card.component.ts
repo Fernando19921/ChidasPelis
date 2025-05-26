@@ -1,54 +1,45 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Movie, MovieService } from '../../../services/movie.service';
-
+import { CommonModule } from '@angular/common';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { LazyImgComponent } from '@shared/components/lazy-img/lazy-img.component';
+import { MovieI } from 'src/app/interfaces/movie-interface';
 
 @Component({
   selector: 'app-movie-card',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.scss']
+  styleUrls: ['./movie-card.component.scss'],
+  imports:[LazyImgComponent,CommonModule]
 })
 export class MovieCardComponent implements OnInit {
-  movies: Movie[] = [];
-  addedToFavorites: { [id: number]: boolean } = {};
+  @Input() movies!: MovieI;
+  @Input() isFavorite: boolean = false;
+  @Input() index: number = 0; // nuevo input para controlar el orden
+  @Output() addToFavorites = new EventEmitter<number>();
+  @Output() removeFromFavorites = new EventEmitter<number>();
+  
+  hasLoaded:boolean=false;
 
-  constructor(
-    private MovieService: MovieService,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
 
-  ngOnInit(): void {
-    // Solo usar localStorage si estamos en el navegador
-    if (isPlatformBrowser(this.platformId)) {
-      const stored = localStorage.getItem('movieId');
-      const ids: number[] = stored ? JSON.parse(stored) : [];
 
-      ids.forEach(id => {
-        this.addedToFavorites[id] = true;
-      });
-    }
+ngOnInit(): void {
+  if (!this.movies) throw new Error("Movie property is required");
+  console.log('Tarjeta:', this.movies.titulo, 'índice:', this.index);
 
-    // Obtener películas desde el servicio
-    this.MovieService.getMovies().subscribe(data => {
-      this.movies = data;
-    });
-  }
+  // Simula un delay diferente por tarjeta
+  const delay = 300 + (this.index * 400); // cada tarjeta se retrasa 200ms más que la anterior
 
-  addToFavorites(id: number): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const stored = localStorage.getItem('movieId');
-      let ids: number[] = stored ? JSON.parse(stored) : [];
+  setTimeout(() => {
+    this.hasLoaded = true;
+  }, delay);
+}
 
-      if (!ids.includes(id)) {
-        ids.push(id);
-        localStorage.setItem('movieId', JSON.stringify(ids));
-        this.addedToFavorites[id] = true;
-      } else {
-        alert(`El ID ${id} ya está en favoritos`);
-        this.addedToFavorites[id] = true;
-      }
+
+  onToggleFavorite(): void {
+    if (this.isFavorite) {
+      this.removeFromFavorites.emit(this.movies.id);
+    } else {
+      this.addToFavorites.emit(this.movies.id);
     }
   }
 }
+

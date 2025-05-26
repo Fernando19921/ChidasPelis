@@ -1,3 +1,11 @@
-<app-header-user></app-header-user>
-<app-movie-card></app-movie-card>
+<!-- Encabezado de usuario -->
+<header class="mb-4">
+  <app-header-user></app-header-user>
+</header>
 
+<!-- Listado de Películas -->
+<main>
+  <section>
+    <app-card-list [movies]="movies"></app-card-list>
+  </section>
+</main>
