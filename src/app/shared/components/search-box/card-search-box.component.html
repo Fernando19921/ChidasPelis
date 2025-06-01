@@ -1,0 +1,29 @@
+<div class="user-icon dropdown" style="position: relative;">
+  <input
+    #txtTagInput
+    type="text"
+    class="form-control"
+    placeholder="Buscar película..."
+    (keyup.enter)="searchTag()"
+  />
+
+  <!-- Ícono con clases Bootstrap y manejador -->
+  <i
+    class="fa fa-user"
+    style="cursor: pointer; margin-left: 10px;"
+    (click)="toggleMenu()"
+    id="userDropdown"
+    aria-expanded="false"
+  ></i>
+
+  <!-- Menú desplegable -->
+  <div
+    class="dropdown-menu show"
+    *ngIf="menuVisible"
+    style="position: absolute; top: 100%; right: 0; display: block;"
+    aria-labelledby="userDropdown"
+  >
+    <a class="dropdown-item" href="#" (click)="goToProfile()">Perfil</a>
+    <a class="dropdown-item" href="#" (click)="logout()">Cerrar sesión</a>
+  </div>
+</div>

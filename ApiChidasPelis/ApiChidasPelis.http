@@ -1,0 +1,6 @@
+@ApiChidasPelis_HostAddress = http://localhost:5063
+
+GET {{ApiChidasPelis_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

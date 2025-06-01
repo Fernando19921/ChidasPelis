@@ -1,0 +1,50 @@
+// Aplica al div principal del formulario
+.bg-dark {
+  background-color: #141414 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8) !important;
+  padding: 40px !important;
+  max-width: 400px;
+  width: 100%;
+  color: #fff !important;
+}
+
+// Input personalizado
+input.form-control {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 15px;
+
+  &::placeholder {
+    color: #999;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25); // rojo Bootstrap
+  }
+}
+
+// Botón rojo personalizado
+.btn-danger {
+  background-color: #b61d1d;
+  border: none;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #a61919;
+  }
+}
+
+// Link y texto
+a {
+  transition: color 0.3s ease;
+  &:hover {
+    color: #dc3545;
+  }
+}

@@ -1,27 +1,40 @@
-// Importamos funciones y servicios necesarios desde Angular
-import { inject } from '@angular/core';
+import { inject, PLATFORM_ID } from '@angular/core';
 import { CanActivateFn, Router, UrlTree } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { isPlatformBrowser } from '@angular/common';
 
-// Definimos un "guardia de ruta" que protege el acceso a ciertas rutas
+function isTokenValid(token: string | null): boolean {
+  if (!token) return false;
+
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    const exp = payload.exp;
+    const now = Math.floor(Date.now() / 1000);
+    return exp && exp > now;
+  } catch (e) {
+    return false;
+  }
+}
+
 export const AuthGuard: CanActivateFn = (): boolean | UrlTree => {
-  // Obtenemos una instancia del servicio de autenticación
   const authService = inject(AuthService);
-
-  // Obtenemos una instancia del enrutador para hacer redirecciones si es necesario
   const router = inject(Router);
+  const platformId = inject(PLATFORM_ID);
 
-  // Verificamos si el usuario está autenticado
-  const isLoggedIn = authService.isAuthenticated();
 
-  // Si el usuario NO está autenticado
-  if (isLoggedIn === false) {
-    console.log('[AuthGuard] Usuario no autenticado. Redirigiendo a /login');
-
-    // Redirigimos al login usando parseUrl (esto recarga el componente aunque ya estés en /login)
+    if (!isPlatformBrowser(platformId)) {
+    // SSR: no se puede validar, mejor bloquear
     return router.parseUrl('login');
   }
 
-  // Si el usuario está autenticado, se permite el acceso a la ruta
+  const token = localStorage.getItem('token');
+  const isValid = isTokenValid(token);
+
+  if (!isValid) {
+    console.log('[AuthGuard] Token inválido o expirado. Redirigiendo a /login');
+    authService.logout();
+    return router.parseUrl('login');
+  }
+
   return true;
 };

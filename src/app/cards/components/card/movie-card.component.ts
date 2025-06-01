@@ -16,14 +16,14 @@ export class MovieCardComponent implements OnInit {
   @Input() index: number = 0; // nuevo input para controlar el orden
   @Output() addToFavorites = new EventEmitter<number>();
   @Output() removeFromFavorites = new EventEmitter<number>();
-  
+
   hasLoaded:boolean=false;
 
 
 
 ngOnInit(): void {
   if (!this.movies) throw new Error("Movie property is required");
-  console.log('Tarjeta:', this.movies.titulo, 'índice:', this.index);
+
 
   // Simula un delay diferente por tarjeta
   const delay = 300 + (this.index * 400); // cada tarjeta se retrasa 200ms más que la anterior

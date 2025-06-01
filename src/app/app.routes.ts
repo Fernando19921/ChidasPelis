@@ -4,17 +4,14 @@ import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
-  {
-    path: 'login',
-    component: LoginComponent
+    path: 'mx',
+    children:[
+      {path:'**', component:LoginComponent}
+    ]
   },
   {
     path: 'home',
-    loadComponent: () => import('./cards/home/pages/homepages/homepages.component')
+    loadComponent: () => import('./cards/home/pages/homepages.component')
       .then(m => m.HomepagesComponent),
     canActivate: [AuthGuard]
   },
@@ -26,6 +23,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    component:LoginComponent // ✅ evita rutas inválidas en blanco
+    redirectTo:'mx' // ✅ evita rutas inválidas en blanco
   }
 ];

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SearchBoxComponent } from '@shared/search-box/search-box.component';
+import { SearchBoxComponent } from '@shared/components/search-box/search-box.component';
 
 @Component({
   selector: 'app-header-user',

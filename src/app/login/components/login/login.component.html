@@ -3,7 +3,9 @@
 </header>
 
 <section class="login-form d-flex justify-content-center align-items-center">
-  <div class="login-container shadow-lg rounded bg-dark text-white p-4">
+  <login-register *ngIf="showRegister" (volver)="handleVolverAlLogin()" @fade></login-register>
+  <div class="login-container shadow-lg rounded bg-dark text-white p-4" *ngIf="!showRegister">
+
     <img src="assets/images/logo.webp" alt="Logo" class="logo-form mx-auto d-block mb-3" />
     <h2 class="text-center mb-4">Iniciar Sesión</h2>
 
@@ -35,9 +37,21 @@
       </button>
     </form>
 
+    <!-- Enlace movido fuera del formulario -->
+    <div class="text-center mt-3">
+      <span>¿No tienes una cuenta?</span>
+      <a
+      (click)="showRegister = true"
+      class="text-decoration-none text-primary fw-semibold"
+      style="cursor: pointer;">
+      Regístrate
+</a>
+    </div>
+
     <p *ngIf="error" class="text-danger text-center mt-3">
       Usuario o contraseña incorrectos
     </p>
+
   </div>
 </section>
 

@@ -5,6 +5,7 @@ import { routes } from './app/app.routes'; // Asegúrate que esté bien la ruta
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
+
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),

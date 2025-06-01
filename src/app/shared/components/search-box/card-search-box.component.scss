@@ -1,0 +1,58 @@
+.user-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative; // 👈 Asegura posicionamiento absoluto de hijos
+
+  i {
+    color: #ffffffcc;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
+
+  input.form-control {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    &::placeholder {
+      color: #888;
+    }
+
+    &:focus {
+      outline: 2px solid #e50914;
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    z-index: 999;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 1rem;
+    min-width: 160px;
+
+    a {
+      display: block;
+      padding: 0.25rem 0;
+      color: #333;
+      text-decoration: none;
+      
+
+      &:hover {
+        color: #e50914;
+      }
+    }
+  }
+}

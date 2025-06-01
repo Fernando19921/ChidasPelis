@@ -2,29 +2,46 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   standalone: true,
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  imports: [FormsModule,CommonModule]
+  imports: [FormsModule,CommonModule,RouterModule,RegisterComponent]
 })
 export class LoginComponent {
   user = '';
   password = '';
   error = false;
+  loading=false;
+  showRegister=false;
 
   constructor(private router: Router, private authService: AuthService) {}
 
   validate(): void {
-    const success = this.authService.login(this.user, this.password);
-    if (success) {
-      this.router.navigate(['/home']);
-    } else {
-      this.error = true;
-    }
+    this.error=false;
+    this.loading=true;
+
+    this.authService.login(this.user,this.password).subscribe({
+      next:(res)=>{
+        this.loading=false;
+        this.router.navigate(['home']);
+      },
+      error:(err)=>{
+        this.loading=false;
+        this.error=true;
+        console.log(`[LoginComponent] Error de login:`,err);
+      }
+    })
   }
+
+  handleVolverAlLogin() {
+  this.showRegister = false;
+  this.router.navigate(['/mx/login']); // ← opcional, si quieres que cambie la URL
+}
+
 }
