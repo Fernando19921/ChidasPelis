@@ -14,7 +14,7 @@ import { RegisterComponent } from '../register/register.component';
   imports: [FormsModule,CommonModule,RouterModule,RegisterComponent]
 })
 export class LoginComponent {
-  user = '';
+  email = '';
   password = '';
   error = false;
   loading=false;
@@ -26,7 +26,7 @@ export class LoginComponent {
     this.error=false;
     this.loading=true;
 
-    this.authService.login(this.user,this.password).subscribe({
+    this.authService.login(this.email,this.password).subscribe({
       next:(res)=>{
         this.loading=false;
         this.router.navigate(['home']);

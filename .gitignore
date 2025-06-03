@@ -44,4 +44,6 @@ Thumbs.db
 .qodo
 
 ApiChidasPelis/appsettings.json
+# Docker
+.dockerignore
 

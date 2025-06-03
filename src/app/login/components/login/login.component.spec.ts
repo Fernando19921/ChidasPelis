@@ -1,40 +1,52 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { LoginComponent } from './login.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing'; // ✅ necesario
+import { AuthService } from 'src/app/services/auth.service'; // Asegura que el servicio esté importado
 
 describe('LoginComponent', () => {
-  // Declaración de variables necesarias para las pruebas
-  let component: LoginComponent; // Instancia del componente que se probará
-  let fixture: ComponentFixture<LoginComponent>; // Fixture para manejar el entorno de pruebas del componente
-  let routerSpy: jasmine.SpyObj<Router>; // Mock del servicio Router para espiar sus métodos
+  let component: LoginComponent;
+  let fixture: ComponentFixture<LoginComponent>;
+  let routerSpy: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
-    // Crea un mock del Router con el método 'navigate'
+    // 🔁 Creamos un espía para simular el Router
     routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
-    // Configura el módulo de pruebas para el componente
     await TestBed.configureTestingModule({
-      imports: [LoginComponent], // ✅ Importa el componente standalone
+      imports: [
+        LoginComponent,              // ✅ componente standalone
+        HttpClientTestingModule      // ✅ evita errores con HttpClient
+      ],
       providers: [
-        { provide: Router, useValue: routerSpy } // ✅ Proporciona el mock del Router
+        { provide: Router, useValue: routerSpy }, // ✅ mock Router
+        AuthService                                 // ✅ se inyecta correctamente
       ]
-    }).compileComponents(); // Compila los componentes necesarios para las pruebas
+    }).compileComponents();
 
-    // Crea la instancia del componente y su fixture
     fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance; // Obtiene la instancia del componente
-    fixture.detectChanges(); // Detecta cambios iniciales en el componente
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
-  // Prueba para verificar que el componente se crea correctamente
   it('should create', () => {
-    expect(component).toBeTruthy(); // Comprueba que la instancia del componente no sea nula
+    expect(component).toBeTruthy();
   });
 
-  // Prueba para verificar que el método onSubmit navega a '/home'
-  it('should navigate to /home on submit', () => {
-    component.onSubmit(); // Llama al método onSubmit del componente
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['/home']); // Verifica que se haya llamado a navigate con el argumento correcto
+  it('should navigate to /home on validate()', () => {
+    // ⚠️ Simula que el login fue exitoso si el método depende de alguna lógica
+    spyOn(component['authService'], 'login').and.returnValue({
+      subscribe: (observer: any) => {
+        observer.next({ token: 'abc123' });
+      }
+    } as any);
+
+    // Simula valores válidos para el formulario (si aplica)
+    component.email= 'test@example.com';
+    component.password = '123456';
+
+    component.validate();
+
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['home']);
   });
 });
-

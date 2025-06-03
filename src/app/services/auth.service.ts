@@ -9,14 +9,13 @@ import { Register } from '../interfaces/register-interface';
   providedIn: 'root'
 })
 export class AuthService {
-  private url='http://localhost:5063/api/users';
+  private url = 'http://localhost:5063/api/users';
   private readonly STORAGE_KEY = 'token';
-
 
   public isLoggedIn$ = new BehaviorSubject<boolean>(false);
 
   constructor(
-    private http:HttpClient,
+    private http: HttpClient,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
@@ -31,17 +30,16 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<any> {
-    return new Observable(observer=>{
-      this.http.post<any>(`${this.url}/login`,{email,password}).subscribe({
-        next:(res)=>{
-          if(isPlatformBrowser(this.platformId)){
+    return new Observable(observer => {
+      this.http.post<any>(`${this.url}/login`, { email, password }).subscribe({
+        next: (res) => {
+          if (isPlatformBrowser(this.platformId)) {
             localStorage.setItem(this.STORAGE_KEY, res.token);
-            console.log(res)
           }
           this.isLoggedIn$.next(true);
           observer.next(res);
         },
-        error:(err)=>{
+        error: (err) => {
           this.isLoggedIn$.next(false);
           observer.error(err);
         }
@@ -49,14 +47,14 @@ export class AuthService {
     });
   }
 
-  register(data:Register):Observable<any>{
-    return this.http.post(`${this.url}/register`,data)
+  register(data: Register): Observable<any> {
+    return this.http.post(`${this.url}/register`, data);
   }
 
-  getProfile():Observable<any>{
-    const token=localStorage.getItem(this.STORAGE_KEY);
-    const headers=new HttpHeaders().set('Suthorization',`Bearer ${token}`);
-    return this.http.get(`${this.url}/profile`,{headers});
+  getProfile(): Observable<any> {
+    const token = localStorage.getItem(this.STORAGE_KEY);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.url}/profile`, { headers });
   }
 
   logout(): void {
@@ -69,8 +67,8 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     if (isPlatformBrowser(this.platformId)) {
-      const token = localStorage.getItem(this.STORAGE_KEY) === 'true';
-      return !token;
+      const token = localStorage.getItem(this.STORAGE_KEY);
+      return !!token;
     }
     return false;
   }

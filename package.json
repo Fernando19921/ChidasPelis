@@ -7,6 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "covarage": "ng test --code-coverage"
+,
     "serve:ssr:ChidasPelis": "node dist/chidas-pelis/server/server.mjs"
   },
   "private": true,
