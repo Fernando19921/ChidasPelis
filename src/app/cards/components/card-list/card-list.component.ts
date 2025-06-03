@@ -16,7 +16,7 @@ import { MovieCardComponent } from '../card/movie-card.component';
   standalone: true,
   imports: [CommonModule, MovieCardComponent],
   templateUrl: './card-list.component.html',
-  styleUrl: './card-list.component.scss'
+  styleUrls: ['./card-list.component.scss']
 })
 export class CardListComponent implements OnInit, OnChanges {
   @Input() public movies: MovieI[] = [];
