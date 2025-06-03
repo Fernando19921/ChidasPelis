@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service'; // si vas a cerrar 
   standalone: true,
   imports: [CommonModule],
   templateUrl: './card-search-box.component.html',
-  styleUrl: './card-search-box.component.scss'
+  styleUrls: ['./card-search-box.component.scss']
 })
 export class SearchBoxComponent {
   menuVisible = false;
