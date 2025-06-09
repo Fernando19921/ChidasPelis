@@ -1,9 +1,13 @@
 export interface MovieI {
-  id:number;
-  titulo: string;
-  img?: string;
-  director?: string;
-  anio?: number;
-  genero?: string;
-  trailer?: string;
+  contentId:number,
+  contentTypeName:string,
+  description:string,
+  genderName:string,
+  time:number,
+  img:string,
+  name:string,
+  director:string,
+  trailer:string
+  rating:number,
+  releaseYear:number;
 }

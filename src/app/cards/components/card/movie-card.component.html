@@ -10,20 +10,26 @@
     <!-- Imagen de la película -->
     <img
       [src]="movies.img"
-      [alt]="movies.titulo"
+      [alt]="movies.name"
       class="card-img"
     />
 
     <!-- Contenido de la tarjeta -->
     <div class="card-content">
-      <h3 class="card-title">{{ movies.titulo }}</h3>
+      <h3 class="card-title">{{ movies.name }}</h3>
 
       <p class="card-desc">
         <strong>Director:</strong> {{ movies.director }}<br />
-        <strong>Año:</strong> {{ movies.anio }}<br />
-        <strong>Género:</strong> {{ movies.genero }}
+        <strong>Año:</strong> {{ movies.releaseYear }}<br />
+        <strong>Género:</strong> {{ movies.genderName }}<br />
+        <strong>Rating:</strong> {{ movies.rating }}<br />
+        <strong>Duración:</strong> {{ movies.time / 60 | number:'1.0-0' }}h {{ movies.time % 60 }}min<br />
+        <strong>Descripción:</strong>
+        {{ isExpanded ? movies.description : (movies.description | slice:0:120) + '...' }}
+       <a class="toggle-desc-link" (click)="isExpanded = !isExpanded">
+        {{ isExpanded ? 'Leer menos' : 'Leer más' }}
+      </a>
       </p>
-
       <!-- Botones -->
       <div class="card-buttons">
         <a

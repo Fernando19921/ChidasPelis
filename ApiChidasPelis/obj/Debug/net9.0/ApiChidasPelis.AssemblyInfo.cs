@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApiChidasPelis")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+80736ccfe34668c3781dcfbdcdcec39ded3b7d80")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8edcb60802892e4c0c8de3e6bdca111b0af30a69")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApiChidasPelis")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApiChidasPelis")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

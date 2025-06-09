@@ -3,7 +3,7 @@
     *ngFor="let movie of movies; let i=index"
     [index]="i"
     [movies]="movie"
-    [isFavorite]="addedToFavorites[movie.id]"
+    [isFavorite]="addedToFavorites[movie.contentId]"
     (addToFavorites)="addToFavorites($event)"
     (removeFromFavorites)="removeFromFavorites($event)"
   ></app-movie-card>

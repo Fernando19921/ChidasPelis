@@ -7,14 +7,14 @@
 
   <!-- Mostrar las tarjetas de películas favoritas -->
   <article *ngFor="let movie of movieFavorite" class="post-card">
-    <img [src]="movie.img" [alt]="movie.titulo" class="card-img" />
+    <img [src]="movie.img" [alt]="movie.contentId" class="card-img" />
 
     <div class="card-content">
-      <h3 class="card-title">{{ movie.titulo }}</h3>
+      <h3 class="card-title">{{ movie.contentId }}</h3>
       <p class="card-desc">
         <strong>Director:</strong> {{ movie.director }}<br />
-        <strong>Año:</strong> {{ movie.anio }}<br />
-        <strong>Género:</strong> {{ movie.genero }}
+        <strong>Año:</strong> {{ movie.releaseYear }}<br />
+        <strong>Género:</strong> {{ movie.genderName }}
       </p>
       <div class="card-buttons">
         <a
@@ -24,7 +24,7 @@
           rel="noopener noreferrer">
           Ver tráiler
         </a>
-        <button class="btn btn-fav btn-agregar" (click)="deleteFavorite(movie.id)" >Quitar Favoritos</button>
+        <button class="btn btn-fav btn-agregar" (click)="deleteFavorite(movie.contentId)" >Quitar Favoritos</button>
       </div>
     </div>
   </article>

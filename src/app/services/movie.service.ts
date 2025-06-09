@@ -8,7 +8,7 @@ import { MovieI } from '../interfaces/movie-interface';
   providedIn: 'root'
 })
 export class MovieService {
-  private url = 'assets/data/peliculas.json';
+  private url = 'http://localhost:5063/api/content';
 
   // 🎯 Esto almacena las películas de forma reactiva
   private movieListSubject = new BehaviorSubject<MovieI[]>([]);

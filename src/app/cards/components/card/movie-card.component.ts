@@ -18,6 +18,8 @@ export class MovieCardComponent implements OnInit {
   @Output() removeFromFavorites = new EventEmitter<number>();
 
   hasLoaded:boolean=false;
+  isExpanded = false;
+
 
 
 
@@ -36,9 +38,9 @@ ngOnInit(): void {
 
   onToggleFavorite(): void {
     if (this.isFavorite) {
-      this.removeFromFavorites.emit(this.movies.id);
+      this.removeFromFavorites.emit(this.movies.contentId);
     } else {
-      this.addToFavorites.emit(this.movies.id);
+      this.addToFavorites.emit(this.movies.contentId);
     }
   }
 }

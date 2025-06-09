@@ -46,7 +46,7 @@ export class FavoritesMovieCardComponent {
       // Llama al servicio para obtener todas las películas y filtra las favoritas
       this.MovieService.getMovies().subscribe(movies => {
         this.movieFavorite = movies.filter(movie =>
-          this.movieFavoriteIds.includes(movie.id) // Filtra las películas cuyos IDs están en movieFavoriteIds
+          this.movieFavoriteIds.includes(movie.contentId) // Filtra las películas cuyos IDs están en movieFavoriteIds
         );
       });
     }
@@ -76,7 +76,7 @@ export class FavoritesMovieCardComponent {
 
         // Actualiza las listas locales
         this.movieFavoriteIds = updatedFavorites;
-        this.movieFavorite = this.movieFavorite.filter(movie => movie.id !== id); // Elimina la película de la lista local
+        this.movieFavorite = this.movieFavorite.filter(movie => movie.contentId !== id); // Elimina la película de la lista local
       }
     }
   }

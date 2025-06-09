@@ -1,29 +1,46 @@
+using System.Text;
 using Microsoft.EntityFrameworkCore;
-using ApiChidasPelis.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
+
+using ApiChidasPelis;
+using ApiChidasPelis.Data;
 using ApiChidasPelis.Services;
+using AutoMapper;
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ✅ 1. Configurar la cadena de conexión
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+// ╔══════════════════════════════════════════════════════════════╗
+// ║                     CONFIGURACIÓN DE SERVICIOS               ║
+// ╚══════════════════════════════════════════════════════════════╝
 
-// ✅ 2. Registrar servicios (antes de Build)
+// 📌 Cadena de conexión
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddControllers(); // Necesario para usar controladores REST
-builder.Services.AddEndpointsApiExplorer(); // Necesario para Swagger
-builder.Services.AddSwaggerGen(); // Generador de documentación Swagger
+// 📌 Controladores
+builder.Services.AddControllers();
 
-// ✅ Forzar rutas en minúsculas
+// 📌 AutoMapper
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+
+
+
+// 📌 Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// 📌 Rutas en minúsculas
 builder.Services.AddRouting(options =>
 {
     options.LowercaseUrls = true;
 });
 
+// 📌 JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -35,35 +52,45 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
-
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)
+            )
         };
     });
+
+// 📌 Servicios personalizados
 builder.Services.AddScoped<JwtService>();
 
+// 📌 CORS
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:4200") // tu frontend
+        policy.WithOrigins("http://localhost:4200") // frontend
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
 });
 
+// ╔══════════════════════════════════════════════════════════════╗
+// ║                     CONFIGURACIÓN DEL PIPELINE              ║
+// ╚══════════════════════════════════════════════════════════════╝
 
 var app = builder.Build();
+
 app.UseCors();
 
-// ✅ 3. Configurar el pipeline HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// app.UseHttpsRedirection(); // Puedes activarlo si configuras HTTPS
+// app.UseHttpsRedirection(); // Puedes activarlo si usas HTTPS
+
 app.UseAuthentication();
 app.UseAuthorization();
-app.MapControllers(); // Necesario para activar tus controladores API
+
+app.MapControllers();
+
 app.Run();
