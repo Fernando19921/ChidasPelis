@@ -1,32 +1,15 @@
-<app-header-user></app-header-user>
-<div class="card-container">
-  <!-- Mostrar un mensaje si no hay películas favoritas -->
-  <div *ngIf="movieFavorite.length === 0" class="alert alert-info text-center">
-    No tienes películas favoritas guardadas.
-  </div>
+<header class="mb-4">
+  <app-header-user></app-header-user>
+</header>
 
-  <!-- Mostrar las tarjetas de películas favoritas -->
-  <article *ngFor="let movie of movieFavorite" class="post-card">
-    <img [src]="movie.img" [alt]="movie.contentId" class="card-img" />
-
-    <div class="card-content">
-      <h3 class="card-title">{{ movie.contentId }}</h3>
-      <p class="card-desc">
-        <strong>Director:</strong> {{ movie.director }}<br />
-        <strong>Año:</strong> {{ movie.releaseYear }}<br />
-        <strong>Género:</strong> {{ movie.genderName }}
-      </p>
-      <div class="card-buttons">
-        <a
-          class="btn btn-trailer"
-          [href]="movie.trailer"
-          target="_blank"
-          rel="noopener noreferrer">
-          Ver tráiler
-        </a>
-        <button class="btn btn-fav btn-agregar" (click)="deleteFavorite(movie.contentId)" >Quitar Favoritos</button>
-      </div>
-    </div>
-  </article>
+<app-card-list [movies]="favoriteMovies"></app-card-list>
+<div
+class="alert alert-dark text-center mt-4 border border-danger rounded-3"
+*ngIf="favoriteMovies.length === 0"
+>
+  <i class="bi bi-emoji-frown-fill text-danger me-2"></i>
+  No tienes películas favoritas aún.
 </div>
+
+
 

@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { MovieI } from 'src/app/interfaces/movie-interface';
 import { MovieCardComponent } from '../card/movie-card.component';
+import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
   selector: 'app-card-list',
@@ -23,7 +24,11 @@ export class CardListComponent implements OnInit, OnChanges {
 
   addedToFavorites: { [id: number]: boolean } = {};
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(
+    @Inject(PLATFORM_ID)
+    private platformId: Object,
+    private movieService:MovieService
+  ) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -34,7 +39,7 @@ export class CardListComponent implements OnInit, OnChanges {
         this.addedToFavorites[id] = true;
       });
 
-      
+
     }
   }
 
@@ -42,17 +47,17 @@ export class CardListComponent implements OnInit, OnChanges {
   }
 
   addToFavorites(id: number): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const stored = localStorage.getItem('movieId');
-      let ids: number[] = stored ? JSON.parse(stored) : [];
-
-      if (!ids.includes(id)) {
-        ids.push(id);
-        localStorage.setItem('movieId', JSON.stringify(ids));
-        this.addedToFavorites[id] = true;
+    this.movieService.addFavorite(id).subscribe({
+      next:()=>{
+        this.addedToFavorites[id]=true
+        console.log(`🎬 Película ${id} agregada a favoritos del usuario`);
+      },
+      error: err=>{
+        console.error("❌ Error al agregar a favoritos:", err);
       }
-    }
+    })
   }
+
 
   removeFromFavorites(id: number): void {
     if (isPlatformBrowser(this.platformId)) {

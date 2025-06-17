@@ -1,6 +1,6 @@
 // src/app/login/components/login/login.component.ts
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -20,6 +20,8 @@ export class LoginComponent {
   loading=false;
   showRegister=false;
 
+
+
   constructor(private router: Router, private authService: AuthService) {}
 
   validate(): void {
@@ -28,6 +30,7 @@ export class LoginComponent {
 
     this.authService.login(this.email,this.password).subscribe({
       next:(res)=>{
+        localStorage.setItem("id",res.user.userId)
         this.loading=false;
         this.router.navigate(['home']);
       },

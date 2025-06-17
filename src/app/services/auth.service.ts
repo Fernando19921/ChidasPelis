@@ -63,6 +63,7 @@ export class AuthService {
     }
     this.isLoggedIn$.next(false);
     this.router.navigate(['login']);
+    localStorage.removeItem('id');
   }
 
   isAuthenticated(): boolean {

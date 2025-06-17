@@ -6,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using ApiChidasPelis;
 using ApiChidasPelis.Data;
 using ApiChidasPelis.Services;
-using AutoMapper;
+
 
 
 

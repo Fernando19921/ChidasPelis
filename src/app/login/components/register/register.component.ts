@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Register} from 'src/app/interfaces/register-interface';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({

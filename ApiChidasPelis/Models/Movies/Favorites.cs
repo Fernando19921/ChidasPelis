@@ -16,6 +16,7 @@ namespace ApiChidasPelis.Models
         [Column("content_id")]
         public int ContentId { get; set; }
 
+        [Column("created_at")]
         public DateTime? CreatedAt { get; set; }
 
         public User User { get; set; } = null!;

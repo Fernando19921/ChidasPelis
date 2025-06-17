@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { LazyImgComponent } from '@shared/components/lazy-img/lazy-img.component';
 import { MovieI } from 'src/app/interfaces/movie-interface';
+import { LoginComponent } from 'src/app/login/components/login/login.component';
 
 @Component({
   selector: 'app-movie-card',

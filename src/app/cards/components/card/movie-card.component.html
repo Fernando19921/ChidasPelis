@@ -26,7 +26,7 @@
         <strong>Duración:</strong> {{ movies.time / 60 | number:'1.0-0' }}h {{ movies.time % 60 }}min<br />
         <strong>Descripción:</strong>
         {{ isExpanded ? movies.description : (movies.description | slice:0:120) + '...' }}
-       <a class="toggle-desc-link" (click)="isExpanded = !isExpanded">
+        <a class="toggle-desc-link" (click)="isExpanded = !isExpanded">
         {{ isExpanded ? 'Leer menos' : 'Leer más' }}
       </a>
       </p>
@@ -49,6 +49,5 @@
         </button>
       </div>
     </div>
-
   </article>
 </div>
